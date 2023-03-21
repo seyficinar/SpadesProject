@@ -13,7 +13,7 @@ public class Card {
 		if(face.equals("Jack")) {
 			this.value = 11;
 		}
-		if(face.equals("Queen")) {
+		else if(face.equals("Queen")) {
 			this.value = 12;
 		}
 		if(face.equals("King")) {
