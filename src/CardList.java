@@ -37,8 +37,13 @@ public class CardList {
 	}
 	
 	//Insertion
-	
 	public void insert(int index, Card newCard) {
+		
+		
+	}
+	
+	//removing card from list
+	public void remove(int index) {
 		
 		
 	}
