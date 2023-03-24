@@ -43,7 +43,7 @@ public class CardList {
 	}
 	
 	//removing card from list
-	public void remove(int index) {
+	public void remove(int index, Card newCard) {
 		
 		
 	}
