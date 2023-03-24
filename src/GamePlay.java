@@ -11,6 +11,20 @@ public class GamePlay {
 	
 	
 	
+	public static void gameOver(Player p1, Player p2, Player p3, Player p4) {
+		
+		
+		
+	}
+	
+	public static void isGameOver(Player p1, Player p2, Player p3, Player p4) {
+		
+		
+		
+	}
+	
+	
+	
 	
 	
 
