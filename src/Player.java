@@ -1,27 +1,59 @@
 
 public class Player {
-	CardList list;
+	CardList hand;
 	int bid;
 	int points;
-	int NumOfHandsWon;
+	int numOfHandsWon;
 	
 	
 	
-	//Constructor
+	
+
+
+	public Player(int bid, int points, int numOfHandsWon) {
+		
+		this.hand = new CardList();
+		this.bid = bid;
+		this.points = points;
+		this.numOfHandsWon = numOfHandsWon;
+	}
+	
+	public CardList getHand() {
+		return hand;
+	}
+
+	public void setHand(CardList hand) {
+		this.hand = hand;
+	}
+
 	public Player() {
+		this.hand = new CardList();
 		
 	}
 
 
+	
+
+
 	//Getters and Setters
+	
+	public int getNumOfHandsWon() {
+		return numOfHandsWon;
+	}
+
+
+	public void setNumOfHandsWon(int numOfHandsWon) {
+		this.numOfHandsWon = numOfHandsWon;
+	}
+	
 	public CardList getList() {
-		return list;
+		return hand;
 	}
 
 
 
 	public void setList(CardList list) {
-		this.list = list;
+		this.hand = list;
 	}
 
 
@@ -53,6 +85,16 @@ public class Player {
 		
 		
 		return null;
+	}
+	
+	//add cards to players hand
+	public void add(Card card) {
+	   
+	}
+	
+	//add cards to players hand in first index
+	public void insertAtBeginning(Card newCard) {
+	   
 	}
 
 }

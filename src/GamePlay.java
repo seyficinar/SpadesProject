@@ -1,7 +1,9 @@
 
 public class GamePlay {
 	boolean isSpadesBroken;
-
+	int numOfTours;
+	int remainingHands;
+	static boolean isGameOver = false;
 	
 
 	public static void main(String[] args) {
@@ -23,6 +25,10 @@ public class GamePlay {
 		
 	}
 	
+	// Method for deck of 52 cards
+		public static CardList createDeck() {
+		
+		}
 	
 	
 	
