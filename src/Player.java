@@ -1,100 +1,102 @@
-
 public class Player {
+
+	String name;
 	CardList hand;
-	int bid;
+	int numOfBid;
 	int points;
 	int numOfHandsWon;
+	boolean isBot;
+	Player next;
 	
-	
-	
-	
-
-
-	public Player(int bid, int points, int numOfHandsWon) {
+	//Constructor
+	public Player(String name, CardList hand, int bid, int points, int numOfHandsWon, boolean isBot, Player next) {
 		
-		this.hand = new CardList();
-		this.bid = bid;
-		this.points = points;
-		this.numOfHandsWon = numOfHandsWon;
 	}
 	
+	//Getters and Setters
+	public String getName() {
+		
+	}
+
+	public void setName(String name) {
+		
+	}
+
+	public boolean isBot() {
+		
+	}
+
+	public void setBot(boolean isBot) {
+		
+	}
+
 	public CardList getHand() {
-		return hand;
+		
 	}
 
 	public void setHand(CardList hand) {
-		this.hand = hand;
+		
+	}
+
+	public Player getNext() {
+		
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		
+	}
+
+	public void setNext(Player next) {
+		
 	}
 
 	public Player() {
-		this.hand = new CardList();
+		
+
+	}
+
+	// Getters and Setters
+
+	public int getNumOfHandsWon() {
 		
 	}
-
-
-	
-
-
-	//Getters and Setters
-	
-	public int getNumOfHandsWon() {
-		return numOfHandsWon;
-	}
-
 
 	public void setNumOfHandsWon(int numOfHandsWon) {
-		this.numOfHandsWon = numOfHandsWon;
+		
 	}
-	
+
 	public CardList getList() {
-		return hand;
+		
 	}
-
-
 
 	public void setList(CardList list) {
-		this.hand = list;
+		
 	}
-
-
 
 	public int getBid() {
-		return bid;
+		
 	}
-
-
 
 	public void setBid(int bid) {
-		this.bid = bid;
+	
 	}
-
-
 
 	public int getPoints() {
-		return points;
+		
 	}
-
-
 
 	public void setPoints(int points) {
-		this.points = points;
+		
 	}
-	
-	//Plays the best card for Bots according to middle and bot's hand
+
+	// Plays the best card for Bots according to middle and bot's hand
 	public static Card playTheBest(CardList pCards, CardList middleCards) {
-		
-		
+
 		return null;
 	}
+
 	
-	//add cards to players hand
-	public void add(Card card) {
-	   
-	}
-	
-	//add cards to players hand in first index
-	public void insertAtBeginning(Card newCard) {
-	   
-	}
 
 }
