@@ -5,16 +5,12 @@ public class Card {
 	String type;
 	String face;
 	Card next;
-	
-	
 
-	
 	public Card() {
-		
+
 	}
-	
-	
-	//Getters and Setters
+
+	// Getters and Setters
 	public int getValue() {
 		return value;
 	}
@@ -47,37 +43,31 @@ public class Card {
 		this.next = next;
 	}
 
-	
-	//Constructor
+	// Constructor
 	public Card(int value, String type, String face) {
-		
+
 		this.value = value;
 		this.type = type;
 		this.face = face;
-		
-		if(face.equals("Jack")) {
+
+		if (face.equals("Jack")) {
 			this.value = 11;
-		}
-		else if(face.equals("Queen")) {
+		} else if (face.equals("Queen")) {
 			this.value = 12;
-		}
-		else if(face.equals("King")) {
+		} else if (face.equals("King")) {
 			this.value = 13;
-		}
-		else if(face.equals("Ace")) {
+		} else if (face.equals("Ace")) {
 			this.value = 14;
-		}
-		else {
+		} else {
 			this.face = "No Face";
 		}
-		
-	}
 
+	}
 
 	@Override
 	public boolean equals(Object obj) {
 		Card c = (Card) obj;
-		return c.value==this.value && c.type.equals(this.type);
+		return c.value == this.value && c.type.equals(this.type);
 	}
 
 }

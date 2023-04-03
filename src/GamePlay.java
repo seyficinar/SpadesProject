@@ -2,33 +2,34 @@ import java.util.Scanner;
 
 public class GamePlay {
 	static boolean spadesBroken;
-	int numOfTours;
+	static int numOfTours = 1;
+	static int numOfRounds = 1;
 	int remainingHands;
 
 	public static void main(String[] args) {
 
 		// Creating the players
 		Player player = new Player();
-		player.name = "Player";
+
 		player.isBot = false;
 		Player bot1 = new Player();
-		player.name = "Bot1";
+
 		bot1.isBot = true;
 		Player bot2 = new Player();
-		player.name = "Bot2";
+
 		bot2.isBot = true;
 		Player bot3 = new Player();
-		player.name = "Bot3";
+
 		bot3.isBot = true;
 
-//		 Creating the player list
+		// Creating the player list
 		PlayerList pList = new PlayerList();
 		pList.add(player);
 		pList.add(bot1);
 		pList.add(bot2);
 		pList.add(bot3);
 
-		// I will assume first starter is a player no matter what the bids are
+		// I will assume first starter is a real player no matter what the bids are
 		Player lastWinner = player;
 		// Creating the deck of cards in the middle
 		CardList middle = new CardList();
@@ -62,7 +63,7 @@ public class GamePlay {
 				bot3.hand.add(p);
 
 			}
-
+			System.out.println("Welcome to tour " + numOfTours);
 			System.out.println("Your new hand as follows: ");
 			player.hand.output();
 			// Bidding
@@ -79,7 +80,7 @@ public class GamePlay {
 
 			// Continues 13 times for every tour
 			for (int j = 1; j <= 13; j++) {
-
+				System.out.println("Round " + numOfRounds);
 				// First Played
 				Card winnerCard = new Card();
 				Card index0 = play(middle, lastWinner);
@@ -157,6 +158,7 @@ public class GamePlay {
 				middle.output();
 				lastWinner.numOfHandsWon++;
 				middle = new CardList();
+				numOfRounds++;
 
 			}
 			// Calculating the points
@@ -165,20 +167,25 @@ public class GamePlay {
 			bot2.points += calculate(bot2);
 			bot3.points += calculate(bot3);
 
+			// End of tour message
 			tourOver(bot1, bot2, bot3, player);
+			numOfTours++;
 
 			spadesBroken = false;
 			bot1.numOfHandsWon = 0;
 			bot2.numOfHandsWon = 0;
 			bot3.numOfHandsWon = 0;
 			player.numOfHandsWon = 0;
+			numOfRounds = 1;
 
 		}
 
+		// Game over message
 		gameOver(bot1, bot2, bot3, player);
 
 	}
 
+	// At the end of the tour, calculates the points of players
 	private static int calculate(Player player) {
 		// If player claimed 0 bid
 		if (player.numOfBid == 0) {
@@ -230,7 +237,7 @@ public class GamePlay {
 
 	// Checks whether the game ended or not
 	public static boolean isGameOver(Player p1, Player p2, Player p3, Player p4) {
-		return (p1.points >= 30 || p2.points >= 30 || p3.points >= 30 || p4.points >= 30);
+		return (p1.points >= 500 || p2.points >= 500 || p3.points >= 500 || p4.points >= 500);
 
 	}
 
@@ -403,8 +410,6 @@ public class GamePlay {
 			typeOfHead = null;
 		}
 
-		Card current = player.hand.head;
-		boolean playable = false;
 		if (!player.isBot) {
 
 			// Assumption: Player will enter the correct entries according to rules

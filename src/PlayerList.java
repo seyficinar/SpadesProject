@@ -6,7 +6,6 @@ public class PlayerList {
 	public PlayerList() {
 		head = null;
 		tail = null;
-		
 
 	}
 
