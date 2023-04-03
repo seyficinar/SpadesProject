@@ -4,76 +4,243 @@ public class CardList {
 	Card head;
 	Card tail;
 
-	// Constructor
 	public CardList() {
+		head = null;
+		tail = null;
 
 	}
 
-	// Getters and Setters
 	public Card getHead() {
-
+		return head;
 	}
 
 	public void setHead(Card head) {
-
+		this.head = head;
 	}
 
 	public Card getTail() {
-
+		return tail;
 	}
 
 	public void setTail(Card tail) {
-
+		this.tail = tail;
 	}
 
 	// Insert first
 	public void insertAtBeginning(Card newCard) {
+		if (head == null) {
+			head = newCard;
+			tail = newCard;
+		} else {
+			newCard.next = head;
+			head = newCard;
+		}
+	}
+
+	// Insertion
+	public void insert(int index, Card newCard) {
+		Card current = head;
+		if (head == null) {
+			head = newCard;
+		} else if (index == 0) {
+			newCard.next = head;
+			head = newCard;
+		} else {
+			int count = 1;
+			do {
+				if (count == index) {
+					newCard.next = current.next;
+					current.next = newCard;
+
+				} else
+					current = current.next;
+			} while (count != index);
+
+		}
 
 	}
 
-	// Removes the card according to index
 	public Card remove(int index) {
 
+		// For first element
+		if (index == 0) {
+			Card c = head;
+			head = head.getNext();
+			if (head == null) {
+				tail = null;
+			}
+			return c;
+		}
+
+		// For the middle
+		int count = 0;
+		Card current = head;
+		Card previous = null;
+		while (current != null) {
+			if (count == index) {
+				if (current == tail) {
+					tail = previous;
+				}
+				previous.setNext(current.getNext());
+				return current;
+			}
+			previous = current;
+			current = current.getNext();
+			count++;
+		}
+
+		return null; // element not found
 	}
 
 	// Returns the number of elements
 	public int numOfElements() {
+		int count = 0;
+		Card c = head;
+		while (c != null) {
+			count++;
+			c = c.next;
+		}
 
+		return count;
 	}
 
-	// Returns the card in the list according to index
 	public Card getCardI(int i) {
-
+		Card tmp = head;
+		int index = 0;
+		while (tmp != null) {
+			if (index == i) {
+				return tmp;
+			}
+			index++;
+			tmp = tmp.getNext();
+		}
+		return null;
 	}
 
 	// Remove card according to card
 	public void remove(Card c) {
 
+		// Head
+		if (head.type.equals(c.type) && c.value == head.value) {
+			head = head.next;
+		}
+		// Tail
+		else if (tail.type.equals(c.type) && c.value == tail.value) {
+			Card current = head.next;
+			Card previous = head;
+			while (current != null) {
+				if (current.value == c.value && c.type.equals(current.type)) {
+					previous.next = null;
+					tail = previous;
+					break;
+
+				}
+				current = current.next;
+				previous = previous.next;
+			}
+
+		}
+		// Middle
+		else {
+			Card current = head.next;
+			Card previous = head;
+			while (current.next != null) {
+				if (current.value == c.value && c.type.equals(current.type)) {
+					previous.next = current.next;
+					break;
+
+				}
+				current = current.next;
+				previous = previous.next;
+			}
+
+		}
+	}
+
+	// Gets previous card
+	public Card getPrevious(Card card) {
+		Card tmp = head;
+		Card previous = null;
+		while (!tmp.type.equals(card.type) && card.value != tmp.value) {
+			previous = tmp;
+			tmp = tmp.getNext();
+		}
+		return previous;
 	}
 
 	// add the element to the end of the list
 
 	public void add(Card card) {
+		if (head == null) {
+			head = card;
+			tail = card;
+		} else {
+			tail.setNext(card);
+			tail = card;
+		}
+	}
+
+	// Output of the card list
+	public void output() {
+		Card c = head;
+		while (c != null) {
+			String face = c.face;
+			int value = c.value;
+			String type = c.type;
+			System.out.println("Face: " + face + " Value: " + value + " Type: " + type);
+			c = c.next;
+		}
 
 	}
 
-	// Prints the CardList
-	public void output() {
-
+	public void deleteLast() {
+		tail = getPrevious(tail);
+		if (tail != null) {
+			tail.setNext(null);
+		} else {
+			head = null;
+		}
 	}
 
 	// shuffles the cardList
 	public void shuffle() {
-
+		int deckSize = numOfElements();
+		for (int i = 0; i < deckSize; i++) {
+			int j = (int) (Math.random() * deckSize);
+			Card card1 = getCardI(i);
+			Card card2 = getCardI(j);
+			swapCards(card1, card2);
+		}
 	}
 
 	// swaps two cards in the list
 	private void swapCards(Card card1, Card card2) {
+		int tempValue = card1.getValue();
+		String tempType = card1.getType();
+		String tempFace = card1.getFace();
 
+		card1.setValue(card2.getValue());
+		card1.setType(card2.getType());
+		card1.setFace(card2.getFace());
+
+		card2.setValue(tempValue);
+		card2.setType(tempType);
+		card2.setFace(tempFace);
 	}
 
 	// Checks whether the cardList contains the types of given type of card
 	public boolean containsType(Card card) {
+
+		Card listCard = this.head;
+
+		while (listCard != null) {
+			if (listCard.getType().equals(card.getType())) {
+				return true;
+			}
+			listCard = listCard.next;
+		}
+
+		return false;
 
 	}
 
