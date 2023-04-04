@@ -11,7 +11,7 @@ public class GamePlay {
 		// Creating the players
 		Player player = new Player();
 
-		player.isBot = false;
+		player.isBot = true;
 		Player bot1 = new Player();
 
 		bot1.isBot = true;
@@ -134,6 +134,7 @@ public class GamePlay {
 
 				// Fourth Played
 				Player player4 = player3.next;
+				
 				Card index3 = play(middle, player4);
 				value = index3.getValue();
 				type = index3.getType();
@@ -153,9 +154,10 @@ public class GamePlay {
 				}
 
 				// End of the round
-				System.out.println("End of the round");
+				
 				System.out.println("Middle as follows: ");
 				middle.output();
+				System.out.println("End of the round");
 				lastWinner.numOfHandsWon++;
 				middle = new CardList();
 				numOfRounds++;
@@ -430,6 +432,9 @@ public class GamePlay {
 			player.hand.remove(playedCard);
 
 		} else {
+			System.out.println("Bots hand as follows: ");
+			player.hand.output();
+			
 
 			// Since there is too much possibilities, I will assume that whenever bots found
 			// the playable cards, they are going to play that card
