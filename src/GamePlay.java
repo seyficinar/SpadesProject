@@ -11,7 +11,7 @@ public class GamePlay {
 		// Creating the players
 		Player player = new Player();
 
-		player.isBot = true;
+		player.isBot = false;
 		Player bot1 = new Player();
 
 		bot1.isBot = true;
