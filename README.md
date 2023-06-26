@@ -1,5 +1,5 @@
 # SpadesProject
-First homework for CS 201
+Basic Card Game
 Card game (Batak in Turkish) with spesific rules without user interface in Java language. Rules as follows: 
 SPADES
 
